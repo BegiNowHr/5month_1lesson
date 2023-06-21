@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function CreatePost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const navigate = useNavigate()
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -13,6 +15,7 @@ function CreatePost() {
         console.log('Пост успешно создан:', response.data);
         setTitle('');
         setBody('');
+        navigate('/posts');
       })
       .catch(error => {
         console.log(error);
